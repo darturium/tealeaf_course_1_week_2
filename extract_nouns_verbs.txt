@@ -1,0 +1,5 @@
+
+Nouns: Deck
+       Value
+       Player
+       Dealer
