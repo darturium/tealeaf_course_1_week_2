@@ -3,3 +3,9 @@ Nouns: Deck
        Value
        Player
        Dealer
+
+
+Behaviors: Shuffle
+           Deal
+           Get_Value
+           Decide_Winner
