@@ -1,14 +1,26 @@
 class Card
-  attr_accessor :suit, :value
+  attr_accessor :suit, :face_value
 
   def initialize(s, v)
     @suit = s
-    @value = v
+    @face_value = v
   end
 
   def to_s
-    "This is the card! #{suit}, #{value}"
+    "The #{face_value} of #{find_suit}"
   end
+
+  def find_suit
+    case suit
+      when "H" then "Hearts"
+      when "D" then "Diamonds"
+      when "S" then "Spades"
+      when "C" then "Clubs"
+    end
+  end
+
+  def
+
 end
 
 class Deck
@@ -21,7 +33,7 @@ class Deck
         @cards << Card.new(suit, face_value)
       end
     end
-    @cards = @cards * num_decks
+    # @cards = @cards * num_decks
     scramble!
   end
 
@@ -29,10 +41,14 @@ class Deck
     cards.shuffle!
   end
 
-  def deal
+  def deal_one
     cards.pop
+  end
+
+  def size
+    cards.size
   end 
-  
+
 end
 
 class Player
@@ -42,6 +58,32 @@ end
 class Dealer
 
 end
+
+class Blackjack
+  attr_accessor :player, :dealer, :deck
+
+  def initialize
+    @player = Player.new("David")
+    @dealer = Dealer.new
+    @deck = Deck.new
+  end
+
+  def run
+    deal_cards
+    show_flow
+    player_turn
+    dealer_turn
+    who_won?
+  end
+end
+
+deck = Deck.new
+
+puts deck.cards
+
+
+
+
 
 
  
