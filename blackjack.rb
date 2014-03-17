@@ -135,19 +135,10 @@ class Blackjack
   end
 end
 
-deck = Deck.new
+class Blackjack
+  def initialize
+  end
+end
 
-player = Player.new("David")
-player.add_card(deck.deal_one)
-player.add_card(deck.deal_one)
-player.add_card(deck.deal_one)
-player.show_hand
-player.total
-puts player.is_busted? ? "Busted!" : "Not Busted"
-
-dealer = Dealer.new
-dealer.add_card(deck.deal_one)
-dealer.add_card(deck.deal_one)
-dealer.show_hand
-dealer.total
-puts dealer.is_busted? 
+game = Blackjack.new
+game.start
