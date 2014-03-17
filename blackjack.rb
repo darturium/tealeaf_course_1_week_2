@@ -18,9 +18,6 @@ class Card
       when "C" then "Clubs"
     end
   end
-
-  def
-
 end
 
 class Deck
@@ -48,15 +45,46 @@ class Deck
   def size
     cards.size
   end 
+end
 
+module Hand
+  def show_hand
+    puts "---- #{name}'s Hand ----"
+    cards.each do |card|
+      puts "=> #{card.to_s}"
+    end
+    puts "=> Total: #{total}"
+  end
+
+  def total
+    "some total"
+  end
+
+  def add_card(new_card)
+    cards << new_card
+  end
 end
 
 class Player
+  include Hand
 
+  attr_accessor :name, :cards
+
+  def initialize(n)
+    @name = n
+    @cards = []
+  end
 end
 
 class Dealer
+  include Hand
 
+  attr_accessor :name, :cards
+  
+  def initialize
+    @name = "Dealer"
+    @cards = []
+  end
 end
 
 class Blackjack
@@ -79,7 +107,18 @@ end
 
 deck = Deck.new
 
-puts deck.cards
+player = Player.new("David")
+player.add_card(deck.deal_one)
+player.add_card(deck.deal_one)
+player.show_hand
+player.total
+
+dealer = Dealer.new
+dealer.add_card(deck.deal_one)
+dealer.add_card(deck.deal_one)
+dealer.show_hand
+dealer.total
+
 
 
 
